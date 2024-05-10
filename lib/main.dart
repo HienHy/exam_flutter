@@ -50,6 +50,7 @@ class DataTableExample extends StatelessWidget {
         title: Text('List Order'),
       ),
       body: ListView(
+        scrollDirection: Axis.horizontal,
         children: [_createDataTable()],
       ),
     ));
@@ -57,16 +58,23 @@ class DataTableExample extends StatelessWidget {
 }
 
 DataTable _createDataTable() {
-  return DataTable(columns: _createColumns(), rows: _createRows());
+  return DataTable(
+      sortAscending: true,
+      columnSpacing: 30.0,
+      dataRowMaxHeight: double.infinity,
+      // Code to be changed.
+
+      columns: _createColumns(),
+      rows: _createRows());
 }
 
 List<DataColumn> _createColumns() {
   return [
     DataColumn(label: Text('Item')),
     DataColumn(label: Text('ItemName')),
+    DataColumn(label: Text('Quantity')),
     DataColumn(label: Text('Price')),
     DataColumn(label: Text('Currency')),
-    DataColumn(label: Text('Quantity')),
   ];
 }
 
@@ -75,9 +83,9 @@ List<DataRow> _createRows() {
       .map((order) => DataRow(cells: [
             DataCell(Text('#' + order['Item'].toString())),
             DataCell(Text(order['ItemName'])),
+            DataCell(Text(order['Quantity'].toString())),
             DataCell(Text(order['Price'].toString())),
             DataCell(Text(order['Currency'])),
-            DataCell(Text(order['Quantity'].toString())),
           ]))
       .toList();
 }
