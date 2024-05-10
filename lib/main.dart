@@ -33,14 +33,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: const DataTableExample(),
+        body: const DataTableOrder(),
       ),
     );
   }
 }
 
-class DataTableExample extends StatelessWidget {
-  const DataTableExample({super.key});
+class DataTableOrder extends StatelessWidget {
+  const DataTableOrder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,6 @@ class DataTableExample extends StatelessWidget {
         title: Text('List Order'),
       ),
       body: ListView(
-        scrollDirection: Axis.horizontal,
         children: [_createDataTable()],
       ),
     ));
